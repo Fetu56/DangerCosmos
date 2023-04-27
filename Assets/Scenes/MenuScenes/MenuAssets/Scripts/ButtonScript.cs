@@ -9,15 +9,6 @@ public class ButtonScript : MonoBehaviour
     public Color ColorStandart;
     public Color ColorOnHover;
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("Enter");
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Debug.Log("Exit");
-    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Enter");

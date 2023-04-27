@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    public float mouseSens = 100f;
+    float mouseSens = 350;
 
     public Transform playerBody;
 
@@ -13,6 +13,9 @@ public class MouseLook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(CfgManagement.mouseSensitivity != 0)
+            mouseSens = CfgManagement.mouseSensitivity * 700;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
