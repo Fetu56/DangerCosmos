@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 5800144255401031200}
   - component: {fileID: 7587804042119494993}
   m_Layer: 0
-  m_Name: Corridor Deadend
+  m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

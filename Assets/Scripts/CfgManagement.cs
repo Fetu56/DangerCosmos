@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CfgManagement : MonoBehaviour
 {
+	public static bool incorrectGeneration { 
+		get { return cfg["Game"]["IncorrectGeneration"].BoolValue; }
+		set { cfg["Game"]["IncorrectGeneration"].BoolValue = value; }
+	}
 	public static float audioLevel { 
 		get { return cfg["Audio"]["AudioLevel"].FloatValue; }
 		set { cfg["Audio"]["AudioLevel"].FloatValue = value; }
@@ -36,7 +40,7 @@ public class CfgManagement : MonoBehaviour
 		cfg = Configuration.LoadFromFile("config.cfg");
 	}
 
-	public void SaveConfig()
+	public static void SaveConfig()
 	{
 		Debug.Log("Saving Client config...");
 
@@ -46,6 +50,7 @@ public class CfgManagement : MonoBehaviour
 
 	private void SetupCleanCFG()
 	{
+		cfg["Game"]["IncorrectGeneration"].BoolValue = false;
 		cfg["Mouse"]["Sensitivity"].FloatValue = 1f;
 		cfg["Audio"]["AudioLevel"].FloatValue = 0.5f;
 		cfg["Audio"]["MusicLevel"].FloatValue = 0.5f;

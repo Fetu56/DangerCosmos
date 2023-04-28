@@ -30,4 +30,8 @@ public class ButtonScript : MonoBehaviour
         Debug.Log("Exiting game...");
         Application.Quit();
     }
+    public void SaveConfig()
+    {
+        CfgManagement.SaveConfig();
+    }
 }

@@ -1816,6 +1816,7 @@ MonoBehaviour:
   - room
   CreatesTags:
   - corridor
+  - exit
   Exits: {fileID: 1183301080548993749}
   Bounds: {fileID: 91026702257837850}
   DeadEndChance: 10
@@ -2220,10 +2221,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyToSpawn:
-  - {fileID: 1048458621209631089, guid: 8e39eb93ba39a5540ae87b4a85be66cd, type: 3}
-  - {fileID: 6759636114514812143, guid: fb1ee2bf155e3f44e907566035c1dc96, type: 3}
+  - {fileID: 439239393980121046, guid: 1e3974e3db8c48c41b2604d2478e7e9e, type: 3}
+  - {fileID: 4921675115321883647, guid: e2fdcaac11701fe438724a8a8b3a76c5, type: 3}
+  - {fileID: 387364091424724237, guid: aedebdaeae12a6743b39120d2f5156b0, type: 3}
   enemiesToSpawn: 2
-  perGeneratorAddEnemy: 2
+  perGeneratorAddEnemy: 0
   StartPosX: 8
   StartPosZ: 8
 --- !u!65 &3547194573079511276
@@ -2237,7 +2239,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 28, y: 5.5, z: 28}
+  m_Size: {x: 50, y: 5.5, z: 50}
   m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &5583219909250139195
 GameObject:

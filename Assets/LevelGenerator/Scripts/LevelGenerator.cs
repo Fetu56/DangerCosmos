@@ -4,11 +4,14 @@ using LevelGenerator.Scripts.Exceptions;
 using LevelGenerator.Scripts.Helpers;
 using LevelGenerator.Scripts.Structure;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LevelGenerator.Scripts
 {
     public class LevelGenerator : MonoBehaviour
     {
+        public AudioSource Audio;
+        public AudioClip Sound;
         /// <summary>
         /// LevelGenerator seed
         /// </summary>
@@ -43,14 +46,14 @@ namespace LevelGenerator.Scripts
         /// Tags that will be taken into consideration when building the first section
         /// </summary>
         public string[] InitialSectionTags;
-        
+
         /// <summary>
         /// Special section rules, limits and forces the amount of a specific tag
         /// </summary>
         public TagRule[] SpecialRules;
 
         protected List<Section> registeredSections = new List<Section>();
-        
+
         public int LevelSize { get; private set; }
         public Transform Container => SectionContainer != null ? SectionContainer : transform;
 
@@ -64,11 +67,26 @@ namespace LevelGenerator.Scripts
                 RandomService.SetSeed(Seed);
             else
                 Seed = RandomService.Seed;
-            
+
             CheckRuleIntegrity();
             LevelSize = MaxLevelSize;
             CreateInitialSection();
             DeactivateBounds();
+            if (this.transform.GetComponentsInChildren<Section>()?.Where(x => x.Tags.Length > 0 && x.Tags[0] == "room")?.Count() < 5)
+            {
+                Debug.Log("Wrong generation :)");
+                if (!CfgManagement.incorrectGeneration)
+                {
+                    SceneManager.LoadScene((int)Assets.Scripts.Scenes.Game);
+                    return;
+                }
+                Audio.Stop();
+                Audio.clip = Sound;
+                Audio.pitch = 1.4f;
+                Audio.Play();
+                DoorOpen.skip = true;
+            }
+
         }
 
         protected void CheckRuleIntegrity()
@@ -85,14 +103,14 @@ namespace LevelGenerator.Scripts
         public void AddSectionTemplate() => Instantiate(Resources.Load("SectionTemplate"), Vector3.zero, Quaternion.identity);
         public void AddDeadEndTemplate() => Instantiate(Resources.Load("DeadEndTemplate"), Vector3.zero, Quaternion.identity);
 
-        public bool IsSectionValid(Bounds newSection, Bounds sectionToIgnore) => 
+        public bool IsSectionValid(Bounds newSection, Bounds sectionToIgnore) =>
             !RegisteredColliders.Except(sectionToIgnore.Colliders).Any(c => c.bounds.Intersects(newSection.Colliders.First().bounds));
 
         public void RegisterNewSection(Section newSection)
         {
             registeredSections.Add(newSection);
 
-            if(SpecialRules.Any(r => newSection.Tags.Contains(r.Tag)))
+            if (SpecialRules.Any(r => newSection.Tags.Contains(r.Tag)))
                 SpecialRules.First(r => newSection.Tags.Contains(r.Tag)).PlaceRuleSection();
 
             LevelSize--;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public AudioSource audioSource;
     public CharacterController controller;
 
     public float speed = 12f;
@@ -29,7 +30,19 @@ public class PlayerMovement : MonoBehaviour
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-
+        if ((x != 0 || z != 0) && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+            Debug.Log("x:" + x);
+            Debug.Log("z:" + z);
+        }
+        if (audioSource.isPlaying)
+        {
+            if ((x == 0 && z == 0) || PauseScript.isPaused)
+            {
+                audioSource.Stop();
+            }
+        }
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * speed * Time.deltaTime);
