@@ -62,7 +62,8 @@ namespace LevelGenerator.Scripts
         protected bool HalfLevelBuilt => registeredSections.Count > LevelSize;
 
         protected void Start()
-        {
+        {   
+            DoorOpen.skip = false;
             if (Seed != 0)
                 RandomService.SetSeed(Seed);
             else

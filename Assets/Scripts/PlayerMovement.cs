@@ -33,8 +33,6 @@ public class PlayerMovement : MonoBehaviour
         if ((x != 0 || z != 0) && !audioSource.isPlaying)
         {
             audioSource.Play();
-            Debug.Log("x:" + x);
-            Debug.Log("z:" + z);
         }
         if (audioSource.isPlaying)
         {
