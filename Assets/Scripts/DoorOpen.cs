@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorOpen : MonoBehaviour
 {
     public AudioSource Audio;
-    public static uint BoxesCollected { get; private set; }
+    public static uint BoxesCollected { get; private set; } = 0;
     public static bool canPass;
     public static bool skip = false;
     public static void AddBox(uint i = 1)

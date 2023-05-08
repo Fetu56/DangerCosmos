@@ -13,16 +13,10 @@ public class PauseScript : MonoBehaviour
     private void Update()
     {
         if(Input.GetKeyUp(KeyCode.Escape))
-        {
             if(isPaused)
-            {
                 ResumeGame();
-            }
             else
-            {
                 PauseGame();
-            }
-        }
     }
     public void PauseGame()
     {
@@ -49,7 +43,6 @@ public class PauseScript : MonoBehaviour
     public void ExitToMenu()
     {
         Time.timeScale = 1f;
-
         SceneManager.LoadScene((int)Scenes.Menu);
     }
 }

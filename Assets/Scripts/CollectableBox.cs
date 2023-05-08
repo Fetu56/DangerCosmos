@@ -4,6 +4,17 @@ using UnityEngine;
 public class CollectableBox : MonoBehaviour
 {
     public AudioSource Audio;
+    public TMPro.TextMeshProUGUI Text;
+    public void Start()
+    {
+        Text = FindObjectOfType<Canvas>().GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        Text.color = Color.white;
+        Text.text = $"Boxes to left: {DoorOpen.BoxesCollected}/10";
+        if (DoorOpen.BoxesCollected >= 10)
+        {
+            Text.color = Color.green;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -21,5 +32,10 @@ public class CollectableBox : MonoBehaviour
         Time.timeScale = 1f;
         yield return new WaitForSeconds(0.03f);
         Destroy(this.gameObject);
+        Text.text = $"Boxes to left: {DoorOpen.BoxesCollected}/10";
+        if(DoorOpen.BoxesCollected >= 10)
+        {
+            Text.color = Color.green;
+        }
     }
 }
