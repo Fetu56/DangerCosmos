@@ -12,11 +12,20 @@ public class PauseScript : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
-            if(isPaused)
+        if (Input.GetKeyUp(KeyCode.Escape))
+            if (isPaused)
+            {
                 ResumeGame();
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
             else
+            {
                 PauseGame();
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
     }
     public void PauseGame()
     {
@@ -36,7 +45,7 @@ public class PauseScript : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         panel.SetActive(false);
-        if(CfgManagement.mouseSensitivity != 0)
+        if (CfgManagement.mouseSensitivity != 0)
             MouseLook.mouseSens = CfgManagement.mouseSensitivity * 700;
     }
 
