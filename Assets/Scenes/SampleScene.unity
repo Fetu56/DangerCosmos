@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.003103807, g: 0.0027302764, b: 0.0033076787, a: 1}
+  m_IndirectSpecularColor: {r: 0.0031041286, g: 0.002730895, b: 0.0033081411, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4652,13 +4652,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1851619908, guid: decbf69df087151459511a4f1bf830a5, type: 3}
+      propertyPath: m_Height
+      value: 2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851619908, guid: decbf69df087151459511a4f1bf830a5, type: 3}
+      propertyPath: m_Radius
+      value: 0.53
+      objectReference: {fileID: 0}
     - target: {fileID: 1851619909, guid: decbf69df087151459511a4f1bf830a5, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1927042071}
     - target: {fileID: 4846919522427619084, guid: decbf69df087151459511a4f1bf830a5, type: 3}
       propertyPath: m_Name
-      value: Tolik
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846919522427619084, guid: decbf69df087151459511a4f1bf830a5, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5190511874994871734, guid: decbf69df087151459511a4f1bf830a5, type: 3}
       propertyPath: m_RootOrder
